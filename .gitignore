@@ -33,4 +33,7 @@ dbt/logs/
 *.xlsx
 *.parquet
 *.zip
-'@
+lambda/convert/build/
+
+lambda/convert/data/
+lambda/convert/out/
