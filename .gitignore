@@ -12,3 +12,25 @@ crash.*.log
 
 # IDE
 .vscode/
+
+Add-Content .gitignore @'
+
+# python
+.venv/
+__pycache__/
+*.pyc
+
+# dbt
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+
+# secrets
+.env
+*.pem
+
+# data and build output
+*.xlsx
+*.parquet
+*.zip
+'@
