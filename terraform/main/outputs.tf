@@ -13,3 +13,11 @@ output "data_bucket" {
 output "convert_function" {
   value = aws_lambda_function.convert.function_name
 }
+
+output "redshift_endpoint" {
+  value = aws_redshiftserverless_workgroup.ecom.endpoint[0].address
+}
+
+output "redshift_secret" {
+  value = aws_redshiftserverless_namespace.ecom.admin_password_secret_arn
+}
