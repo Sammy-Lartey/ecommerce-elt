@@ -9,3 +9,7 @@ output "caller_arn" {
 output "data_bucket" {
   value = aws_s3_bucket.data.id
 }
+
+output "convert_function" {
+  value = aws_lambda_function.convert.function_name
+}
