@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw_data
+    schema: raw_data
+    tables:
+      - name: events
+      - name: customers
+      - name: products

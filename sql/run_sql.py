@@ -34,7 +34,7 @@ def show_rows(statement_id):
     names = [c["name"] for c in result["ColumnMetadata"]]
     print("  " + " | ".join(names))
     for record in result["Records"]:
-        cells = [list(cell.values())[0] for cell in record]
+        cells = ["NULL" if cell.get("isNull") else list(cell.values())[0] for cell in record]
         print("  " + " | ".join(str(c) for c in cells))
 
 
