@@ -37,3 +37,8 @@ lambda/convert/build/
 
 lambda/convert/data/
 lambda/convert/out/
+
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+dbt/.user.yml
