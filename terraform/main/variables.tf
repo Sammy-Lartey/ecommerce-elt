@@ -11,3 +11,5 @@ variable "env" {
 }
 
 variable "my_ip" {}
+
+variable "alert_email" {}

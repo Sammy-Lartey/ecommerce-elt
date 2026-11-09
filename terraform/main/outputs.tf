@@ -33,3 +33,11 @@ output "dbt_task_security_group" {
 output "default_subnets" {
   value = data.aws_subnets.default.ids
 }
+
+output "alerts_topic" {
+  value = aws_sns_topic.alerts.arn
+}
+
+output "load_function" {
+  value = aws_lambda_function.load.function_name
+}
