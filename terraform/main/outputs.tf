@@ -41,3 +41,7 @@ output "alerts_topic" {
 output "load_function" {
   value = aws_lambda_function.load.function_name
 }
+
+output "pipeline_arn" {
+  value = aws_sfn_state_machine.pipeline.arn
+}
