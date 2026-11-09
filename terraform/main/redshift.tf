@@ -21,6 +21,13 @@ resource "aws_security_group" "redshift" {
     cidr_blocks = ["${var.my_ip}/32"]
   }
 
+  ingress {
+    from_port       = 5439
+    to_port         = 5439
+    protocol        = "tcp"
+    security_groups = [aws_security_group.dbt_task.id]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0

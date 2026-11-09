@@ -25,3 +25,11 @@ output "redshift_secret" {
 output "dbt_repository" {
   value = aws_ecr_repository.dbt.repository_url
 }
+
+output "dbt_task_security_group" {
+  value = aws_security_group.dbt_task.id
+}
+
+output "default_subnets" {
+  value = data.aws_subnets.default.ids
+}
