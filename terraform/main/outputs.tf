@@ -21,3 +21,7 @@ output "redshift_endpoint" {
 output "redshift_secret" {
   value = aws_redshiftserverless_namespace.ecom.admin_password_secret_arn
 }
+
+output "dbt_repository" {
+  value = aws_ecr_repository.dbt.repository_url
+}
