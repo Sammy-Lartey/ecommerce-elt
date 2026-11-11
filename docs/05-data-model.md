@@ -241,9 +241,9 @@ Columns: `discount_code`, `transactions`, `avg_units_per_transaction`, `avg_tran
 
 ---
 
-## 5. Tests on the gold layer
+## 5. Tests
 
-The gold models have tests that check key constraints and relationships. These help catch issues such as duplicate identifiers, missing keys and transactions that reference customers or products that do not exist in their respective dimensions.
+All 19 dbt tests run on every pipeline run, alongside the models they check. Eight sit on this layer:
 
 | Model | Test | What it protects |
 |---|---|---|
@@ -253,9 +253,14 @@ The gold models have tests that check key constraints and relationships. These h
 | `fct_transactions` | `customer_id` exists in `dim_customers` | No transaction points to an unknown customer |
 | `fct_transactions` | `product_id` exists in `dim_products` | No transaction points to an unknown product |
 
-The remaining tests are defined on the staging models. There is also a custom test, `assert_revenue_matches_staging`, which compares total revenue in the gold layer with total revenue in silver.
+The other eleven sit earlier in the flow:
 
-In total, **19 dbt tests run on every pipeline run**. If a test fails, dbt reports the failure and skips models that depend on the failing test or model.
+| Where | Tests |
+|---|---|
+| Staging (10) | `customer_id`, `product_id` and `event_id` are unique and not null in their own models; every event has a non-null `customer_id` and `product_id` that exist in `stg_customers` and `stg_products` |
+| Custom (1) | `assert_revenue_matches_staging` checks that total revenue in gold equals total revenue in silver, so nothing is lost or double-counted on the way through |
+
+Testing the same keys at both layers is deliberate: staging catches bad source data, and gold catches mistakes introduced by the models themselves.
 
 ---
 
